@@ -31,7 +31,7 @@ The main method opens and reads the file. Whilst reading the file until the end 
   
   * Open the Part1 folder on command line 
   * Use gcc to compile all the mem.c file in the Part1 folder 
-      ``` gcc mem.c -o test ````
+      ``` gcc mem.c -o test ```
   * Execute the exec files 
       ``` ./test ```
       - The program will automatically print statements regarding the page number and offset of each virtual address 
