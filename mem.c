@@ -52,12 +52,14 @@ int main()
     fclose(fp);   
     return 0; }
 
-int offset(int k, int value){
+/* calculates the offset of the virtual address*/
+int offset(int k, int value){ 
     unsigned  mask;
     mask = (1 << k) - 1; //k =n 
     return value & mask; 
 }
 
+/* calculates the page number of the virtual address*/
 int pageNum(int value, int k){
     return (value >> k); 
 }
