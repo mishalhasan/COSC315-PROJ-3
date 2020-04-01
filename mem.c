@@ -11,8 +11,7 @@ int main()
     int n; 
   
 
-    // Get file name from user. The file should be 
-    // either in current folder or complete path should be provided 
+    // Open file 
     if ((fp = fopen("sample.txt","r")) == NULL){
        printf("Error! opening file");
 
@@ -32,17 +31,16 @@ int main()
     int i = 0;
     while (fgets(line, sizeof(line), fp)) {
         if(i>1){
-            printf("test %d \n",i); 
+            int val = atoi(line); 
+            printf("virtual address %d is in page number %d and offset %d \n", val ,pageNum(val,n), offset(n,val));
             i++; 
         }else if(i == 0 )
         {
-            n = atoi(line); // offset 
-            printf("%d \n", n); 
+            n = atoi(line); // offset --> n bits
             i++;   
         }else if (i==1)
         {
-            m= atoi(line); //page number, 16-n = m
-            printf("%d \n", m); 
+            m= atoi(line); //page number, 16-n = m bits 
             i++; 
         }
 
@@ -51,9 +49,15 @@ int main()
     
  
     // Close the file 
-    fclose(fp); 
-    printf("The file has %d lines\n ",count); 
-  
+    fclose(fp);   
     return 0; }
 
+int offset(int k, int value){
+    unsigned  mask;
+    mask = (1 << k) - 1; //k =n 
+    return value & mask; 
+}
 
+int pageNum(int value, int k){
+    return (value >> k); 
+}
