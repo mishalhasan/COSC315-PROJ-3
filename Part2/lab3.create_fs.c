@@ -1,6 +1,7 @@
 /* create a file  to act as a disk  and format the file system residing on the disk */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
